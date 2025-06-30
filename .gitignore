@@ -1,0 +1,12 @@
+# Arquivos compilados do Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Pastas geradas pelo NetBeans
+/nbproject/private/
+/build/
+/dist/
+/nbdist/
+.nb-gradle/
