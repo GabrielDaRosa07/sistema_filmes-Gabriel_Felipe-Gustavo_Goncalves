@@ -35,13 +35,16 @@ public class Principal {
                     case 7 -> new PessoaController().createPessoa(con);
                     case 8 -> new PessoaController().listarPessoas(con);
                     case 9 -> new PessoaController().deletePessoa(con);
-                    case 10 -> System.out.println("Saindo...");
+                    case 10 -> new GeneroController().createGenero(con);
+                    case 11 -> new GeneroController().listarGeneros(con);
+                    case 12 -> new GeneroController().deleteGenero(con);
+                    case 0 -> System.out.println("Saindo...");
                     default -> System.out.println("Opção inválida, digite novamente:");
                 }
             }catch(SQLException ex){
                 System.err.println("Erro do banco de dados: "+ex.getMessage());   
             }
-        }while (op!=10);
+        }while (op!=0);
         
         c.closeConnection();
         System.out.println("Conexao terminada");
@@ -58,9 +61,12 @@ public class Principal {
         System.out.println("5 - Listar os filmes");
         System.out.println("6 - Deletar um filme\n");
         System.out.println("7 - Inserir Pessoa (Ator/Diretor)");
-        System.out.println("8 - Listar as Pessoas");
+        System.out.println("8 - Listar as Pessoas(Ator/Diretor)");
         System.out.println("9 - Deletar uma Pessoa (Ator/Diretor)\n");
-        System.out.println("10 - Sair");
+        System.out.println("10 - Inserir novo Genero");
+        System.out.println("11 - Listar os Generos");
+        System.out.println("12 - Deletar um Genero\n");
+        System.out.println("0 - Sair");
         System.out.print("\nOpçao escolhida: ");
         
         Scanner s = new Scanner(System.in);
