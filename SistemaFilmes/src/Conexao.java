@@ -1,7 +1,9 @@
 import java.sql.*;
 /**
- *
- * @author gabriel-da-rosa
+ * - LEMBRAR DE ADICIONAR O .JAR DO DRIVER JDBC NOS LIBRARIES
+ * - LINK JAVA 8 PRA CIMA: https://jdbc.postgresql.org/download/postgresql-42.7.7.jar
+ * 
+ * @author gabriel-da-rosa : gustavo-gonçalves
  * 
  * Classe de conexao com o banco
  */

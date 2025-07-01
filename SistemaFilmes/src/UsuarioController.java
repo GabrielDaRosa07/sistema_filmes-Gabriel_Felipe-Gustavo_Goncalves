@@ -23,7 +23,7 @@ public class UsuarioController {
             id = 1+random.nextInt(999);
         }while (UsuarioModel.idExists(id, con));
         
-        System.out.println("Id gerado: "+id);
+        System.out.println("\nId gerado: "+id);
         
         System.out.print("Nome: ");
         String nome = s.nextLine();
