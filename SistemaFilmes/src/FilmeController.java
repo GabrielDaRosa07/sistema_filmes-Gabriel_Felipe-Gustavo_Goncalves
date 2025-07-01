@@ -21,16 +21,16 @@ public class FilmeController {
         }while (FilmeModel.idExists(idFilme, con));
         
         System.out.println("\nID gerado: "+idFilme);
-        System.out.println("Título: ");
+        System.out.print("Título: ");
         String titulo = s.nextLine();
-        System.out.println("Ano de lançamento: ");
+        System.out.print("Ano de lançamento: ");
         int ano = s.nextInt();
-        System.out.println("Duração em Minutos: ");
+        System.out.print("Duração em Minutos: ");
         int duracao = s.nextInt();
         s.nextLine();
-        System.out.println("Sinopse: ");
+        System.out.print("Sinopse: ");
         String sinopse = s.nextLine();
-        System.out.println("Url do poster: ");
+        System.out.print("Url do poster: ");
         String poster = s.nextLine();
         
         FilmeBean fb = new FilmeBean(idFilme, titulo, ano, duracao, sinopse, poster);

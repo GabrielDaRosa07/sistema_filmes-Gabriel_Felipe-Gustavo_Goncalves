@@ -30,13 +30,15 @@ public class Principal {
                     case 2 -> new UsuarioController().listarUsuarios(con);
                     case 3 -> new FilmeController().createFilme(con);
                     case 4 -> new FilmeController().listarFilmes(con);
-                    case 5 -> System.out.println("Saindo...");
+                    case 5 -> new PessoaController().createPessoa(con);
+                    case 6 -> new PessoaController().listarPessoas(con);
+                    case 7 -> System.out.println("Saindo...");
                     default -> System.out.println("Opção inválida, digite novamente:");
                 }
             }catch(SQLException ex){
                 System.err.println("Erro do banco de dados: "+ex.getMessage());   
             }
-        }while (op!=5);
+        }while (op!=7);
         
         c.closeConnection();
         System.out.println("Conexao terminada");
@@ -50,7 +52,9 @@ public class Principal {
         System.out.println("2 - Listar os usuarios");
         System.out.println("3 - Inserir novo filme");
         System.out.println("4 - Listar os filmes");
-        System.out.println("5 - Sair");
+        System.out.println("5 - Inserir Pessoa (Ator/Diretor)");
+        System.out.println("6 - Listar as Pessoas (Ator/Diretor)");
+        System.out.println("7 - Sair");
         System.out.print("\nOpçao escolhida: ");
         
         Scanner s = new Scanner(System.in);
