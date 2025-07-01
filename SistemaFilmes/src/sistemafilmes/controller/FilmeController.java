@@ -1,8 +1,12 @@
+package sistemafilmes.controller;
+
 /**
  *
  * @author gabrielrosa
  */
 
+import sistemafilmes.model.FilmeModel;
+import sistemafilmes.bean.FilmeBean;
 import java.sql.*;
 import java.util.*;
 

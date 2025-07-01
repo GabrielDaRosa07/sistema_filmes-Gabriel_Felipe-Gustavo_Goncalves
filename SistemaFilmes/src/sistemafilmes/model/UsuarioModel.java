@@ -1,3 +1,5 @@
+package sistemafilmes.model;
+
 
 /**
  *
@@ -6,6 +8,7 @@
  * Essa classe basicamente tem os metodos para inserir e mostar os usuarios
  */
 
+import sistemafilmes.bean.UsuarioBean;
 import java.sql.*;
 import java.util.*;
 

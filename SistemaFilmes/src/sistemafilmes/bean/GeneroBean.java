@@ -1,3 +1,5 @@
+package sistemafilmes.bean;
+
 /**
  *
  * @author gabriel-da-rosa

@@ -1,3 +1,5 @@
+package sistemafilmes.main;
+
 import java.sql.*;
 /**
  * - LEMBRAR DE ADICIONAR O .JAR DO DRIVER JDBC NOS LIBRARIES

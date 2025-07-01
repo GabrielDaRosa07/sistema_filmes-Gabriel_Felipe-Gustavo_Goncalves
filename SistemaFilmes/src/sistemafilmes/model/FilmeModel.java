@@ -1,8 +1,11 @@
+package sistemafilmes.model;
+
 /**
  *
  * @author gabrielrosa
  */
 
+import sistemafilmes.bean.FilmeBean;
 import java.sql.*;
 import java.util.*;
 

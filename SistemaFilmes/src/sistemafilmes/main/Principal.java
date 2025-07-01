@@ -1,3 +1,5 @@
+package sistemafilmes.main;
+
 /**
  * - LEMBRAR DE ADICIONAR O .JAR DO DRIVER JDBC NOS LIBRARIES
  * - LINK JAVA 8 PRA CIMA: https://jdbc.postgresql.org/download/postgresql-42.7.7.jar
@@ -8,10 +10,15 @@
  * - Listar todos os filmes que tem uma nota de avaliacao superior a media geral das notas dos filmes
  * 
  * @author gabriel-da-rosa : gustavo-gonçalves
- * õ
+ *
  * essa o nome ja diz tudo
  */
 
+import sistemafilmes.controller.UsuarioController;
+import sistemafilmes.controller.PessoaController;
+import sistemafilmes.controller.GeneroController;
+import sistemafilmes.controller.FilmeController;
+import sistemafilmes.main.Conexao;
 import java.sql.*;
 import java.util.*;
 

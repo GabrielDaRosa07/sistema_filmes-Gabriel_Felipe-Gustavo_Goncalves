@@ -1,3 +1,5 @@
+package sistemafilmes.controller;
+
 
 /**
  *
@@ -6,6 +8,8 @@
  * Ele e o meio termo, nao fala com o banco e nem mostra nada, ele gera a logica das operacoes.
  */
 
+import sistemafilmes.model.UsuarioModel;
+import sistemafilmes.bean.UsuarioBean;
 import java.sql.*;
 import java.util.*;
 
