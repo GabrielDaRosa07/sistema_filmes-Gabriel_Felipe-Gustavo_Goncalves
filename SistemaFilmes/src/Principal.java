@@ -2,8 +2,13 @@
  * - LEMBRAR DE ADICIONAR O .JAR DO DRIVER JDBC NOS LIBRARIES
  * - LINK JAVA 8 PRA CIMA: https://jdbc.postgresql.org/download/postgresql-42.7.7.jar
  * 
- * @author gabriel-da-rosa : gustavo-gonçalves
+ * IDEIAS PARA AS ULTIMAS ETAPAS:
  * 
+ * - Listar todas as avaliaçoes, mostrando o nome do usuario que a fez e o titulo do filme
+ * - Listar todos os filmes que tem uma nota de avaliacao superior a media geral das notas dos filmes
+ * 
+ * @author gabriel-da-rosa : gustavo-gonçalves
+ * õ
  * essa o nome ja diz tudo
  */
 
