@@ -73,4 +73,31 @@ public class UsuarioModel {
         return false;
     }
     
+    public static void delete(int id, Connection con) throws SQLException{
+        
+        String sqlAvaliacoes = "DELETE FROM Avaliacao WHERE IDUser = ?";
+        String sqlUsuario = "DELETE FROM Usuario WHERE IDUser = ?";
+        
+        try (PreparedStatement stAvaliacoes = con.prepareStatement(sqlAvaliacoes)){
+            
+            stAvaliacoes.setInt(1, id);
+            stAvaliacoes.executeUpdate();
+            
+        }
+        
+        try(PreparedStatement stUsuario = con.prepareStatement(sqlUsuario)){
+            
+            stUsuario.setInt(1, id);
+            int rowsAffected = stUsuario.executeUpdate();
+            
+            if(rowsAffected >0){
+                System.out.println("Usuario de ID "+id+" foi removido :) ");
+            }else{
+                System.out.println("Nenhum usuario encontrado com o ID "+id);
+            }
+            
+        }
+        
+    }
+    
 }

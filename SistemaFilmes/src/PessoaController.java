@@ -44,4 +44,30 @@ public class PessoaController {
         
     }
     
+    public void deletePessoa(Connection con) throws SQLException{
+        
+        Scanner s = new Scanner(System.in);
+        System.out.println("-----Remover Pessoa (Ator/Diretor)-----\n");
+        System.out.print("Digite o ID da pessoa que quer remover:");
+        
+        if(!s.hasNextInt()){
+            
+            System.out.print("Entrada inválida, digite um ID existente");
+            return;
+        }
+        
+        int id = s.nextInt();
+        s.nextLine();
+        
+        System.out.print("Tem certeza da remoção? (s/n) ");
+        String confirmacao = s.next();
+        
+        if(confirmacao.equalsIgnoreCase("s")){
+            PessoaModel.delete(id,con);
+        }else{
+            System.out.println("Remoçao cancelada :(");
+        }
+        
+    }
+    
 }

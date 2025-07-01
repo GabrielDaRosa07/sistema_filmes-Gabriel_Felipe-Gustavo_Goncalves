@@ -28,17 +28,20 @@ public class Principal {
 
                     case 1 -> new UsuarioController().createUsuario(con);
                     case 2 -> new UsuarioController().listarUsuarios(con);
-                    case 3 -> new FilmeController().createFilme(con);
-                    case 4 -> new FilmeController().listarFilmes(con);
-                    case 5 -> new PessoaController().createPessoa(con);
-                    case 6 -> new PessoaController().listarPessoas(con);
-                    case 7 -> System.out.println("Saindo...");
+                    case 3 -> new UsuarioController().deleteUsuario(con);
+                    case 4 -> new FilmeController().createFilme(con);
+                    case 5 -> new FilmeController().listarFilmes(con);
+                    case 6 -> new FilmeController().deleteFilme(con);
+                    case 7 -> new PessoaController().createPessoa(con);
+                    case 8 -> new PessoaController().listarPessoas(con);
+                    case 9 -> new PessoaController().deletePessoa(con);
+                    case 10 -> System.out.println("Saindo...");
                     default -> System.out.println("Opção inválida, digite novamente:");
                 }
             }catch(SQLException ex){
                 System.err.println("Erro do banco de dados: "+ex.getMessage());   
             }
-        }while (op!=7);
+        }while (op!=10);
         
         c.closeConnection();
         System.out.println("Conexao terminada");
@@ -50,11 +53,14 @@ public class Principal {
         System.out.println("\n -----MENU-----");
         System.out.println("\n1 - Inserir novo usuario");
         System.out.println("2 - Listar os usuarios");
-        System.out.println("3 - Inserir novo filme");
-        System.out.println("4 - Listar os filmes");
-        System.out.println("5 - Inserir Pessoa (Ator/Diretor)");
-        System.out.println("6 - Listar as Pessoas (Ator/Diretor)");
-        System.out.println("7 - Sair");
+        System.out.println("3 - Deletar um usuario\n");
+        System.out.println("4 - Inserir novo filme");
+        System.out.println("5 - Listar os filmes");
+        System.out.println("6 - Deletar um filme\n");
+        System.out.println("7 - Inserir Pessoa (Ator/Diretor)");
+        System.out.println("8 - Listar as Pessoas");
+        System.out.println("9 - Deletar uma Pessoa (Ator/Diretor)\n");
+        System.out.println("10 - Sair");
         System.out.print("\nOpçao escolhida: ");
         
         Scanner s = new Scanner(System.in);

@@ -54,5 +54,31 @@ public class UsuarioController {
         for(UsuarioBean ub: all){
             System.out.println(ub.toString());
         }
-    } 
+    }
+    
+    public void deleteUsuario(Connection con) throws SQLException{
+        
+        Scanner s = new Scanner(System.in);
+        System.out.println("-----Remover Usuário-----\n");
+        System.out.print("Digite o ID do usuário que quer remover:");
+        
+        if(!s.hasNextInt()){
+            
+            System.out.print("Entrada inválida, digite um ID existente");
+            return;
+        }
+        
+        int id = s.nextInt();
+        s.nextLine();
+        
+        System.out.print("Tem certeza da remoção? (s/n) ");
+        String confirmacao = s.next();
+        
+        if(confirmacao.equalsIgnoreCase("s")){
+            UsuarioModel.delete(id,con);
+        }else{
+            System.out.println("Remoçao cancelada :(");
+        }
+        
+    }
 }

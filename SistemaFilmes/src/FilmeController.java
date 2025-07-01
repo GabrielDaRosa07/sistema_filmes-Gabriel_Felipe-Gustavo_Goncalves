@@ -51,4 +51,28 @@ public class FilmeController {
         
     }
     
+    public void deleteFilme(Connection con) throws SQLException{
+        
+        Scanner s = new Scanner(System.in);
+        System.out.println("-----Remover Filme-----\n");
+        System.out.print("Digite o id do filme a ser removido: ");
+        
+        if(!s.hasNextInt()){
+            System.out.println("Filme nao encontrado, digite um válido");
+            return;
+        }
+        
+        int id = s.nextInt();
+        s.nextLine();
+        
+        System.out.print("Tem certeza da remoção? (s/n) ");
+        String confirmacao = s.next();
+        
+        if(confirmacao.equalsIgnoreCase("s")){
+            FilmeModel.delete(id, con);
+        }else{
+            System.out.println("A remoção foi cancelada :(");
+        }
+    }
+    
 }

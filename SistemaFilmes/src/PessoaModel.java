@@ -60,4 +60,31 @@ public class PessoaModel {
         return false;
     }
     
+    public static void delete(int id, Connection con) throws SQLException{
+        
+        String sqlElenco = "DELETE FROM Elenco WHERE IDPessoa = ?";
+        String sqlPessoa = "DELETE FROM Pessoa WHERE IDPessoa = ?";
+        
+        try (PreparedStatement stElenco = con.prepareStatement(sqlElenco)){
+            
+            stElenco.setInt(1, id);
+            stElenco.executeUpdate();
+            
+        }
+        
+        try(PreparedStatement stPessoa = con.prepareStatement(sqlPessoa)){
+            
+            stPessoa.setInt(1, id);
+            int rowsAffected = stPessoa.executeUpdate();
+            
+            if(rowsAffected >0){
+                System.out.println("Pessoa de ID "+id+" foi removida :) ");
+            }else{
+                System.out.println("Nenhuma pessoa encontrada com o ID "+id+" :( ");
+            }
+            
+        }
+        
+    }
+    
 }
