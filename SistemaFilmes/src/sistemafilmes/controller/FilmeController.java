@@ -5,6 +5,7 @@ package sistemafilmes.controller;
  * @author gabrielrosa
  */
 
+import sistemafilmes.bean.FilmeNotaBean;
 import sistemafilmes.model.FilmeModel;
 import sistemafilmes.bean.FilmeBean;
 import java.sql.*;
@@ -51,6 +52,22 @@ public class FilmeController {
         
         for(FilmeBean fb:listaFilmes){
             System.out.println(fb.toString());
+        }
+        
+    }
+    
+    public void listarFilmesMedia(Connection con) throws SQLException{
+        
+        System.out.println("\n-----Filmes com nota acima de media de todos os filmes-----\n");
+        
+        ArrayList<FilmeNotaBean> lista = FilmeModel.listMedia(con);
+        
+        if(lista.isEmpty()){
+            System.out.println("Não tem filmes acima da média ou não tem notas suficientes :(");        
+        }else{
+            for (FilmeNotaBean fnb:lista){
+                System.out.println(fnb.toString());
+            }
         }
         
     }

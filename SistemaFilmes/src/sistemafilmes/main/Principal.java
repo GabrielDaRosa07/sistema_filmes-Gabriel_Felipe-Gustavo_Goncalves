@@ -14,11 +14,10 @@ package sistemafilmes.main;
  * essa o nome ja diz tudo
  */
 
-import sistemafilmes.controller.UsuarioController;
-import sistemafilmes.controller.PessoaController;
-import sistemafilmes.controller.GeneroController;
-import sistemafilmes.controller.FilmeController;
-import sistemafilmes.main.Conexao;
+import sistemafilmes.controller.*;
+import sistemafilmes.bean.*;
+import sistemafilmes.main.*;
+import sistemafilmes.model.*;
 import java.sql.*;
 import java.util.*;
 
@@ -50,6 +49,8 @@ public class Principal {
                     case 10 -> new GeneroController().createGenero(con);
                     case 11 -> new GeneroController().listarGeneros(con);
                     case 12 -> new GeneroController().deleteGenero(con);
+                    case 13 -> new AvaliacaoJoinController().listarAvaliacoesJoin(con);
+                    case 14 -> new FilmeController().listarFilmesMedia(con);
                     case 0 -> System.out.println("Saindo...");
                     default -> System.out.println("Opção inválida, digite novamente:");
                 }
@@ -65,21 +66,18 @@ public class Principal {
     
     private static int menu(){
         
-        System.out.println("\n -----MENU-----");
-        System.out.println("\n1 - Inserir novo usuario");
-        System.out.println("2 - Listar os usuarios");
-        System.out.println("3 - Deletar um usuario\n");
-        System.out.println("4 - Inserir novo filme");
-        System.out.println("5 - Listar os filmes");
-        System.out.println("6 - Deletar um filme\n");
-        System.out.println("7 - Inserir Pessoa (Ator/Diretor)");
-        System.out.println("8 - Listar as Pessoas(Ator/Diretor)");
-        System.out.println("9 - Deletar uma Pessoa (Ator/Diretor)\n");
-        System.out.println("10 - Inserir novo Genero");
-        System.out.println("11 - Listar os Generos");
-        System.out.println("12 - Deletar um Genero\n");
+        System.out.println("\n--- MENU --- SISTEMA DE FILMES ---\n");
+        System.out.println("1 - Inserir Usuário | 2 - Listar Usuários | 3 - Remover Usuário");
+        System.out.println("4 - Inserir Filme   | 5 - Listar Filmes   | 6 - Remover Filme");
+        System.out.println("7 - Inserir Pessoa  | 8 - Listar Pessoas  | 9 - Remover Pessoa");
+        System.out.println("10 - Inserir Gênero | 11 - Listar Gêneros | 12 - Remover Gênero");
+        System.out.println("\n--- CONSULTAS ---\n");
+        System.out.println("13 - Listar Avaliações com: nome do usuario, titulo do filme, nota e critica");
+        System.out.println("14 - Media das notas das Avaliações");
+        System.out.println("\n--- --- --- ---");
         System.out.println("0 - Sair");
-        System.out.print("\nOpçao escolhida: ");
+        System.out.println("--- --- --- ---");
+        System.out.print("Sua opção: ");
         
         Scanner s = new Scanner(System.in);
         

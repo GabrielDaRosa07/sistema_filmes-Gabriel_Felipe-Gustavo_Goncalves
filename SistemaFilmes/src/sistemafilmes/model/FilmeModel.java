@@ -5,6 +5,7 @@ package sistemafilmes.model;
  * @author gabrielrosa
  */
 
+import sistemafilmes.bean.FilmeNotaBean;
 import sistemafilmes.bean.FilmeBean;
 import java.sql.*;
 import java.util.*;
@@ -47,6 +48,29 @@ public class FilmeModel {
         }
         return listaFilmes;
         
+    }
+    
+    public static ArrayList<FilmeNotaBean> listMedia(Connection con) throws SQLException{
+        
+        String sql = "SELECT f.Titulo, a.Nota " +
+                     "FROM Avaliacao a " +
+                     "JOIN Filme f ON a.IDFilme = f.IDFilme " +
+                     "WHERE a.Nota > (SELECT AVG(Nota) FROM Avaliacao) " +
+                     "ORDER BY a.Nota DESC"; // ordena o melhor pro pior
+
+        
+        ArrayList<FilmeNotaBean> lista = new ArrayList<>();
+        
+        try(Statement st = con.createStatement(); ResultSet result = st.executeQuery(sql)){
+            while(result.next()){
+                FilmeNotaBean fnb = new FilmeNotaBean(
+                        result.getString("Titulo"),
+                        result.getDouble("Nota")
+                );
+                lista.add(fnb);
+            }
+        }
+        return lista;
     }
     
     public static boolean idExists(int id, Connection con) throws SQLException{
