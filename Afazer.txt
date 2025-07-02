@@ -1,0 +1,7 @@
+A fazer:
+
+criar avaliacao, relacionando usuario e filme ao criar a avaliacao
+
+criar possui, que relaciona filme com genero ao criar o filme
+
+criar dirige e elenco, que ao criar o filme, pede se quer adicionar diretor e elenco
