@@ -11,7 +11,7 @@ package sistemafilmes.model;
 import sistemafilmes.bean.UsuarioBean;
 import java.sql.*;
 import java.util.*;
-
+ 
 public class UsuarioModel {
     
     public static void create(UsuarioBean ub, Connection con) throws SQLException{

@@ -15,7 +15,7 @@ public class PessoaController {
     public void createPessoa(Connection con) throws SQLException{
         
         Scanner s = new Scanner(System.in);
-        System.out.println("\n-----Cadastro de Pessoa (Diretor, Ator)-----\n");
+        System.out.println("\n-----Cadastro de Pessoa (Diretor, Ator)-----");
         
         int idPessoa;
         Random random = new Random();
@@ -39,7 +39,7 @@ public class PessoaController {
     
     public void listarPessoas(Connection con) throws SQLException{
         
-        System.out.println("-----Lista de Pessoas(Ator, Diretor)-----\n");
+        System.out.println("-----Lista de Pessoas(Ator, Diretor)-----");
         ArrayList<PessoaBean> listaPessoas = PessoaModel.listAll(con);
         
         for(PessoaBean pb:listaPessoas){
@@ -51,7 +51,7 @@ public class PessoaController {
     public void deletePessoa(Connection con) throws SQLException{
         
         Scanner s = new Scanner(System.in);
-        System.out.println("-----Remover Pessoa (Ator/Diretor)-----\n");
+        System.out.println("-----Remover Pessoa (Ator/Diretor)-----");
         System.out.print("Digite o ID da pessoa que quer remover:");
         
         if(!s.hasNextInt()){

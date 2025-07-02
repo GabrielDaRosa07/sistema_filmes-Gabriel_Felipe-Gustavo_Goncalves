@@ -55,8 +55,13 @@ public class Principal {
                     default -> System.out.println("Opção inválida, digite novamente:");
                 }
             }catch(SQLException ex){
-                System.err.println("Erro do banco de dados: "+ex.getMessage());   
+                System.err.println("Erro do banco de dados: "+ex.getMessage());  
             }
+            
+            if(op!=0){
+                pausa();
+            }
+            
         }while (op!=0);
         
         c.closeConnection();
@@ -66,12 +71,12 @@ public class Principal {
     
     private static int menu(){
         
-        System.out.println("\n--- MENU --- SISTEMA DE FILMES ---\n");
+        System.out.println("\n--- MENU PRINCIPAL--- SISTEMA DE FILMES ---\n");
         System.out.println("1 - Inserir Usuário | 2 - Listar Usuários | 3 - Remover Usuário");
         System.out.println("4 - Inserir Filme   | 5 - Listar Filmes   | 6 - Remover Filme");
         System.out.println("7 - Inserir Pessoa  | 8 - Listar Pessoas  | 9 - Remover Pessoa");
         System.out.println("10 - Inserir Gênero | 11 - Listar Gêneros | 12 - Remover Gênero");
-        System.out.println("\n--- CONSULTAS ---\n");
+        System.out.println("\n--- CONSULTAS --- SISTEMA DE FILMES ---\n");
         System.out.println("13 - Listar Avaliações com: nome do usuario, titulo do filme, nota e critica");
         System.out.println("14 - Media das notas das Avaliações");
         System.out.println("\n--- --- --- ---");
@@ -86,6 +91,18 @@ public class Principal {
         }
         
         return 0;
+    }
+    
+    private static void pausa(){
+        System.out.println("\n--- --- --- ---");
+        System.out.print("Pressione enter para continuar no menu");
+        System.out.println("\n--- --- --- ---");
+        try{
+            new Scanner(System.in).nextLine();
+        }catch(Exception e){
+            
+        }
+        
     }
     
     

@@ -16,7 +16,7 @@ public class FilmeController {
     public void createFilme(Connection con) throws SQLException{
         
         Scanner s = new Scanner(System.in);
-        System.out.println("\n-----Cadastro de Filme-----\n");
+        System.out.println("\n-----Cadastro de Filme-----");
         
         int idFilme;
         Random random = new Random();
@@ -46,7 +46,7 @@ public class FilmeController {
     
     public void listarFilmes(Connection con) throws SQLException{
         
-        System.out.println("-----Lista de Filmes-----\n");
+        System.out.println("\n-----Lista de Filmes-----");
         
         ArrayList<FilmeBean> listaFilmes = FilmeModel.listAll(con);
         
@@ -58,7 +58,7 @@ public class FilmeController {
     
     public void listarFilmesMedia(Connection con) throws SQLException{
         
-        System.out.println("\n-----Filmes com nota acima de media de todos os filmes-----\n");
+        System.out.println("\n-----Filmes com nota acima de media de todos os filmes-----");
         
         ArrayList<FilmeNotaBean> lista = FilmeModel.listMedia(con);
         
@@ -75,7 +75,7 @@ public class FilmeController {
     public void deleteFilme(Connection con) throws SQLException{
         
         Scanner s = new Scanner(System.in);
-        System.out.println("-----Remover Filme-----\n");
+        System.out.println("\n-----Remover Filme-----");
         System.out.print("Digite o id do filme a ser removido: ");
         
         if(!s.hasNextInt()){

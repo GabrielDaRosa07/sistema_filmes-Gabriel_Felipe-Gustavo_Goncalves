@@ -15,7 +15,7 @@ public class GeneroController {
     public void createGenero(Connection con) throws SQLException{
         
         Scanner s = new Scanner(System.in);
-        System.out.println("\n-----Casdastro de Genero-----\n");
+        System.out.println("\n-----Casdastro de Genero-----");
         
         int idGenero;
         Random random = new Random();
@@ -37,7 +37,7 @@ public class GeneroController {
     
     public void listarGeneros(Connection con) throws SQLException{
         
-        System.out.println("-----Lista de Generos-----\n");
+        System.out.println("\n-----Lista de Generos-----");
         ArrayList<GeneroBean> listaGenero = GeneroModel.listAll(con);
         for(GeneroBean gb:listaGenero){
             System.out.println(gb.toString());
@@ -49,7 +49,7 @@ public class GeneroController {
         
         Scanner s = new Scanner(System.in);
         
-        System.out.println("-----Remover Genero-----\n");
+        System.out.println("\n-----Remover Genero-----");
         System.out.print("Digite o genero a ser removido: ");
         
         int id = s.nextInt();

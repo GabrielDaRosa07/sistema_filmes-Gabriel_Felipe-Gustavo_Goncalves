@@ -18,7 +18,7 @@ public class UsuarioController {
     public void createUsuario(Connection con) throws SQLException{
         
         Scanner s = new Scanner(System.in);
-        System.out.println("\n----- Cadastro de novo usuario -----\n");
+        System.out.println("\n----- Cadastro de novo usuario -----");
         
         int id;
         Random random = new Random();
@@ -51,7 +51,7 @@ public class UsuarioController {
     
     public void listarUsuarios(Connection con) throws SQLException{
         
-        System.out.println("-----Lista de Usuáruos Cadastrados-----\n");
+        System.out.println("\n-----Lista de Usuáruos Cadastrados-----");
         
         ArrayList<UsuarioBean> all = UsuarioModel.listAll(con);
       
@@ -63,7 +63,7 @@ public class UsuarioController {
     public void deleteUsuario(Connection con) throws SQLException{
         
         Scanner s = new Scanner(System.in);
-        System.out.println("-----Remover Usuário-----\n");
+        System.out.println("\n-----Remover Usuário-----");
         System.out.print("Digite o ID do usuário que quer remover:");
         
         if(!s.hasNextInt()){
