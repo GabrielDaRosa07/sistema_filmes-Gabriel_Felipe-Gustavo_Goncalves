@@ -2,11 +2,11 @@ package sistemafilmes.model;
 
 /**
  *
- * @author gabrielrosa
+ * @author gabriel-da-rosa : gustavo-gonçalves
  */
 
-import sistemafilmes.bean.FilmeNotaBean;
-import sistemafilmes.bean.FilmeBean;
+import sistemafilmes.bean.*;
+
 import java.sql.*;
 import java.util.*;
 
@@ -28,7 +28,14 @@ public class FilmeModel {
     
     public static ArrayList<FilmeBean> listAll(Connection con) throws SQLException{
         
-        String sql = "SELECT IDFilme, Titulo, Ano, Duracao, Sinopse, Poster FROM Filme ORDER BY Titulo";
+        String sql = "SELECT f.IDFilme, f.Titulo, f.Ano, f.Duracao, f.Sinopse, f.Poster, " +
+                     "STRING_AGG(g.Nome, ', ') AS Generos " +
+                     "FROM Filme f " +
+                     "LEFT JOIN Possui p ON f.IDFilme = p.IDFilme " +
+                     "LEFT JOIN Genero g ON p.IDGenero = g.IDGenero " +
+                     "GROUP BY f.IDFilme " +
+                     "ORDER BY f.Titulo";
+        
         ArrayList<FilmeBean> listaFilmes = new ArrayList<>();
         
         try (Statement st = con.createStatement(); ResultSet result = st.executeQuery(sql)){
@@ -43,6 +50,14 @@ public class FilmeModel {
                     result.getString("Sinopse"),
                     result.getString("Poster")
                 );
+
+                String generosConcatenados = result.getString("Generos");                
+                if (generosConcatenados != null) {
+                    // Separa a string de generos em uma lista
+                    List<String> generosList = List.of(generosConcatenados.split(", "));
+                    fb.setGeneros(generosList);
+                }                
+                
                 listaFilmes.add(fb);
             }  
         }
@@ -77,7 +92,7 @@ public class FilmeModel {
         
         String sql = "SELECT COUNT(*) FROM Filme WHERE IDFilme = ?";
         
-        try (PreparedStatement st = con.prepareCall(sql)){
+        try (PreparedStatement st = con.prepareStatement(sql)){
             st.setInt(1, id);
             
             try(ResultSet rs = st.executeQuery()){
@@ -121,6 +136,59 @@ public class FilmeModel {
                 System.out.println("Filme de ID "+id+ " não encontrado :( ");
             }
         }   
+    }
+    
+    public static void associarGenero(int idFilme, int idGenero, Connection con) throws SQLException{
+        
+        String sqlCheck = "SELECT COUNT(*) FROM Possui WHERE IDFilme = ? AND IDGenero = ?";        
+        
+        try(PreparedStatement stCheck = con.prepareStatement(sqlCheck)){
+           
+            stCheck.setInt(1,idFilme);
+            stCheck.setInt(2, idGenero);
+            
+            try(ResultSet rs = stCheck.executeQuery()){
+                if (rs.next() && rs.getInt(1) > 0) {
+                    System.out.println("Este filme já está associado a este gênero.");
+                    return; // Sai do método se a associação já existe
+                }
+            }
+        }
+        
+        String sqlInsert = "INSERT INTO Possui(IDFilme, IDGenero) VALUES (?, ?)";
+        
+        try(PreparedStatement stInsert = con.prepareStatement(sqlInsert)){
+            
+            stInsert.setInt(1, idFilme);
+            stInsert.setInt(2, idGenero);
+            stInsert.execute();
+            System.out.println("Gênero associado ao filme com sucesso!");
+            
+        }
+            
+    }
+    
+    public static void adicionarElenco(int idFilme,int idPessoa,Connection con) throws SQLException{
+        
+        String sqlCheck = "SELECT COUNT(*) FROM Elenco WHERE IDFilme = ? AND IDPessoa = ?";
+        try(PreparedStatement stCheck = con.prepareStatement(sqlCheck)){
+            stCheck.setInt(1,idFilme);
+            stCheck.setInt(2,idPessoa);
+            try(ResultSet rs = stCheck.executeQuery()){
+                if(rs.next() && rs.getInt(1)>0){
+                    System.out.println("Essa pessoa já está no elenco deste filme.");
+                    return;
+                }
+            }
+        }
+        
+        String sqlInsert = "INSERT INTO Elenco (IDFilme, IDPessoa) VALUES (?, ?)";
+        try (PreparedStatement stInsert = con.prepareStatement(sqlInsert)) {
+            stInsert.setInt(1, idFilme);
+            stInsert.setInt(2, idPessoa);
+            stInsert.execute();
+            System.out.println("Pessoa adicionada ao elenco :) ");
+        }
     }
     
 }

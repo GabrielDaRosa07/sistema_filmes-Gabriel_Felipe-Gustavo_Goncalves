@@ -1,9 +1,12 @@
 package sistemafilmes.bean;
-
 /**
  *
- * @author gabrielrosa
+ * @author gabriel-da-rosa : gustavo-gonçalves
  */
+
+import java.util.*;
+
+
 public class FilmeBean {
     
     private int idFilme;
@@ -12,6 +15,7 @@ public class FilmeBean {
     private int duracao;
     private String sinopse;
     private String poster;
+    private List<String> generos;
 
     public FilmeBean(int idFilme, String titulo, int ano, int duracao, String sinopse, String poster) {
         this.idFilme = idFilme;
@@ -20,6 +24,7 @@ public class FilmeBean {
         this.duracao = duracao;
         this.sinopse = sinopse;
         this.poster = poster;
+        this.generos = new ArrayList<>();
     }
 
     public int getIdFilme() {
@@ -69,10 +74,19 @@ public class FilmeBean {
     public void setPoster(String poster) {
         this.poster = poster;
     }
+    
+    public List<String> getGeneros() {
+        return generos;
+    }
 
+    public void setGeneros(List<String> generos) {
+        this.generos = generos;
+    }
+    
     @Override
     public String toString() {
-        return "ID: " + idFilme + " | Título: " + titulo + " (" + ano + ") | Duração: " + duracao + " min";
+        String generosStr = generos.isEmpty() ? "Nenhum" : String.join(", ", generos);
+        return "ID: " + idFilme + " | Título: " + titulo + " (" + ano + ") | Gêneros: " + generosStr;
     }
 }
 

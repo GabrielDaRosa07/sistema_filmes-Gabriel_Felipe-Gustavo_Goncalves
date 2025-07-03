@@ -73,7 +73,8 @@ INSERT INTO Pessoa (IDPessoa, Nome, Papel) VALUES
 (101, 'Keanu Reeves', 'Ator'),
 (102, 'Lana Wachowski', 'Diretor'),
 (103, 'David Corenswet', 'Ator'),
-(104, 'James Gunn', 'Diretor');
+(104, 'Tarantino', 'Diretor/Ator');
+(106, 'James Gunn', 'Diretor');
 
 INSERT INTO Filme (IDFilme, Titulo, Ano, Duracao, Sinopse) VALUES
 (1001, 'Matrix', 1999, 136, 'Um hacker chamado Neo escolhe descobrir a verdade sobre sua realidade.'),

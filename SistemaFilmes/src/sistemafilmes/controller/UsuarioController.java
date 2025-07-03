@@ -3,7 +3,7 @@ package sistemafilmes.controller;
 
 /**
  *
- * @author gabriel-da-rosa
+ * @author gabriel-da-rosa : gustavo-gonçalves
  * 
  * Ele e o meio termo, nao fala com o banco e nem mostra nada, ele gera a logica das operacoes.
  */

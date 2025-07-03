@@ -2,7 +2,7 @@ package sistemafilmes.model;
 
 /**
  *
- * @author gabrielrosa
+ * @author gabriel-da-rosa : gustavo-gonçalves
  */
 
 import sistemafilmes.bean.AvaliacaoJoinBean;
@@ -23,7 +23,6 @@ public class AvaliacaoJoinModel {
         
         try(Statement st = con.createStatement(); ResultSet result = st.executeQuery(sql)){
             while(result.next()){
-                //pra cada linha do resultado, cria um AvaliacaoJoinBean
                 AvaliacaoJoinBean adb = new AvaliacaoJoinBean(
                    result.getString("Nome"),   //coluna usuario
                    result.getString("Titulo"), //  ||   filme

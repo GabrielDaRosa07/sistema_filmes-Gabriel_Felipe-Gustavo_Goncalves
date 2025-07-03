@@ -2,12 +2,11 @@ package sistemafilmes.controller;
 
 /**
  *
- * @author gabrielrosa
+ * @author gabriel-da-rosa : gustavo-gonçalves
  */
 
-import sistemafilmes.bean.FilmeNotaBean;
-import sistemafilmes.model.FilmeModel;
-import sistemafilmes.bean.FilmeBean;
+import sistemafilmes.bean.*;
+import sistemafilmes.model.*;
 import java.sql.*;
 import java.util.*;
 
@@ -46,14 +45,39 @@ public class FilmeController {
     
     public void listarFilmes(Connection con) throws SQLException{
         
-        System.out.println("\n-----Lista de Filmes-----");
-        
+        System.out.println("\n-----Lista de Filmes Cadastrados-----");
         ArrayList<FilmeBean> listaFilmes = FilmeModel.listAll(con);
-        
+       
         for(FilmeBean fb:listaFilmes){
             System.out.println(fb.toString());
-        }
+        } 
         
+        Scanner input = new Scanner(System.in);
+        int idFilmeEscolhido;
+        
+        do {
+            System.out.print("\nDigite o ID de um filme para ver o elenco (ou 0 para voltar ao menu principal): ");
+            if(!input.hasNextInt()){
+                System.out.println("Entrada inválida. Tente novamente.");
+                input.next();
+                idFilmeEscolhido = -1;
+                continue;
+            }
+            idFilmeEscolhido = input.nextInt();
+            input.nextLine();
+            if(idFilmeEscolhido != 0){
+                System.out.println("\n-----Elenco do Filme-----");
+                ArrayList<PessoaBean> elenco = PessoaModel.listarElenco(idFilmeEscolhido, con);
+
+                if(elenco.isEmpty()) {
+                    System.out.println("Nenhuma pessoa encontrada no elenco");
+                }else{
+                    for(PessoaBean p:elenco){
+                        System.out.println(p.toString());
+                    }
+                }
+            }
+        } while (idFilmeEscolhido != 0);
     }
     
     public void listarFilmesMedia(Connection con) throws SQLException{
@@ -94,6 +118,55 @@ public class FilmeController {
         }else{
             System.out.println("A remoção foi cancelada :(");
         }
+    }
+    
+    public void associarGeneroFilme(Connection con) throws SQLException{
+        
+        Scanner s = new Scanner(System.in);
+        System.out.println("\n-----Associar Gênero a um Filme-----");
+        
+        System.out.println("\nFilmes disponíveis:");
+        new FilmeController().listarFilmes(con); 
+        System.out.print("\nDigite o ID do Filme: ");
+        int idFilme = s.nextInt();
+        s.nextLine(); 
+        
+        String querContinuar;
+        
+        do{
+            System.out.println("\nGeneros disponíveis:");
+            new GeneroController().listarGeneros(con); 
+            System.out.print("\nDigite o ID do Genero: ");
+            int idGenero = s.nextInt();
+            s.nextLine(); 
+        
+            FilmeModel.associarGenero(idFilme, idGenero, con);
+            
+            System.out.print("\nDeseja associar outro genero a esse filme? (s/n): ");
+            querContinuar = s.nextLine();            
+        }while (querContinuar.equalsIgnoreCase("s"));
+        
+        System.out.println("Associação de gêneros concluida :) .");
+        
+    }
+    
+    public void adicionarPessoaElenco(Connection con) throws SQLException{
+        
+        Scanner s = new Scanner(System.in);
+        System.out.println("\n-----Adicionar pessoa ao elenco de um filme (Ator/Diretor)-----");
+        
+        System.out.println("\nFilmes disponíveis:");
+        new FilmeController().listarFilmes(con);
+        System.out.print("\nDigite o ID do Filme: ");
+        int idFilme = s.nextInt();
+        
+        System.out.println("\nPessoas (Atores/Diretores) disponíveis:");
+        new PessoaController().listarPessoas(con);
+        System.out.print("\nDigite o ID da Pessoa pra adicionar no elenco: ");
+        int idPessoa = s.nextInt();
+        
+        FilmeModel.adicionarElenco(idFilme, idPessoa, con);
+
     }
     
 }

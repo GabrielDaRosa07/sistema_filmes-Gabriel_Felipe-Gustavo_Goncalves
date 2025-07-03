@@ -3,7 +3,7 @@ package sistemafilmes.bean;
 
 /**
  *
- * @author gabrielrosa
+ * @author gabriel-da-rosa : gustavo-gonçalves
  */
 public class AvaliacaoJoinBean {
 

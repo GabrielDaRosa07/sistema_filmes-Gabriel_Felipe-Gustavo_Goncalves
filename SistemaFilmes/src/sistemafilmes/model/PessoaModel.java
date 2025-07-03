@@ -2,7 +2,7 @@ package sistemafilmes.model;
 
 /**
  *
- * @author gabrielrosa
+ * @author gabriel-da-rosa : gustavo-gonçalves
 */
 
 import sistemafilmes.bean.PessoaBean;
@@ -41,6 +41,30 @@ public class PessoaModel {
             
         }
         return listaPessoas;
+    }
+    
+    public static ArrayList<PessoaBean>listarElenco(int idFilme,Connection con) throws SQLException {
+
+        String sql = "SELECT p.IDPessoa, p.Nome, p.Papel FROM Pessoa p " +
+                     "JOIN Elenco e ON p.IDPessoa = e.IDPessoa " +
+                     "WHERE e.IDFilme = ? " +
+                     "ORDER BY p.Nome";
+        ArrayList<PessoaBean> elenco = new ArrayList<>();
+        try(PreparedStatement st = con.prepareStatement(sql)){
+            st.setInt(1,idFilme);
+            try(ResultSet result = st.executeQuery()){
+                while(result.next()){
+                    PessoaBean pb = new PessoaBean(
+                        result.getInt("IDPessoa"),
+                        result.getString("Nome"),
+                        result.getString("Papel")
+                    );
+                    elenco.add(pb);
+                }
+            }
+        }
+        return elenco;
+        
     }
     
     public static boolean idExists(int id,Connection con) throws SQLException{

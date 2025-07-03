@@ -2,7 +2,7 @@ package sistemafilmes.model;
 
 /**
  *
- * @author gabriel-da-rosa
+ * @author gabriel-da-rosa : gustavo-gonçalves
  */
 
 import sistemafilmes.bean.GeneroBean;

@@ -3,7 +3,7 @@ package sistemafilmes.model;
 
 /**
  *
- * @author gabriel-da-rosa
+ * @author gabriel-da-rosa : gustavo-gonçalves
  * 
  * Essa classe basicamente tem os metodos para inserir e mostar os usuarios
  */

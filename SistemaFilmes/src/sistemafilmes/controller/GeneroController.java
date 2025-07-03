@@ -2,7 +2,7 @@ package sistemafilmes.controller;
 
 /**
  *
- * @author gabriel-da-rosa
+ * @author gabriel-da-rosa : gustavo-gonçalves
  */
 
 import sistemafilmes.model.GeneroModel;
