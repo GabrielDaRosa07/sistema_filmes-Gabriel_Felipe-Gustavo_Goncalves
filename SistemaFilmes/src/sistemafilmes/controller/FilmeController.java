@@ -150,23 +150,4 @@ public class FilmeController {
         
     }
     
-    public void adicionarPessoaElenco(Connection con) throws SQLException{
-        
-        Scanner s = new Scanner(System.in);
-        System.out.println("\n-----Adicionar pessoa ao elenco de um filme (Ator/Diretor)-----");
-        
-        System.out.println("\nFilmes disponíveis:");
-        new FilmeController().listarFilmes(con);
-        System.out.print("\nDigite o ID do Filme: ");
-        int idFilme = s.nextInt();
-        
-        System.out.println("\nPessoas (Atores/Diretores) disponíveis:");
-        new PessoaController().listarPessoas(con);
-        System.out.print("\nDigite o ID da Pessoa pra adicionar no elenco: ");
-        int idPessoa = s.nextInt();
-        
-        FilmeModel.adicionarElenco(idFilme, idPessoa, con);
-
-    }
-    
 }

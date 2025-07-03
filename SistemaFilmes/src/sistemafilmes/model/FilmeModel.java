@@ -168,27 +168,5 @@ public class FilmeModel {
             
     }
     
-    public static void adicionarElenco(int idFilme,int idPessoa,Connection con) throws SQLException{
-        
-        String sqlCheck = "SELECT COUNT(*) FROM Elenco WHERE IDFilme = ? AND IDPessoa = ?";
-        try(PreparedStatement stCheck = con.prepareStatement(sqlCheck)){
-            stCheck.setInt(1,idFilme);
-            stCheck.setInt(2,idPessoa);
-            try(ResultSet rs = stCheck.executeQuery()){
-                if(rs.next() && rs.getInt(1)>0){
-                    System.out.println("Essa pessoa já está no elenco deste filme.");
-                    return;
-                }
-            }
-        }
-        
-        String sqlInsert = "INSERT INTO Elenco (IDFilme, IDPessoa) VALUES (?, ?)";
-        try (PreparedStatement stInsert = con.prepareStatement(sqlInsert)) {
-            stInsert.setInt(1, idFilme);
-            stInsert.setInt(2, idPessoa);
-            stInsert.execute();
-            System.out.println("Pessoa adicionada ao elenco :) ");
-        }
-    }
-    
+
 }

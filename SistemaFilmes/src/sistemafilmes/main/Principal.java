@@ -51,7 +51,7 @@ public class Principal {
                     case 15 -> new AvaliacaoJoinController().listarAvaliacoesJoin(con);
                     case 16 -> new FilmeController().listarFilmesMedia(con);
                     case 17 -> new FilmeController().associarGeneroFilme(con);
-                    case 18 -> new FilmeController().adicionarPessoaElenco(con);
+                    case 18 -> new ElencoController().adicionarPessoaAoElenco(con);
                     case 0 -> System.out.println("Saindo...");
                     default -> System.out.println("Opção inválida, digite novamente:");
                 }
@@ -78,10 +78,10 @@ public class Principal {
         System.out.println("7 - Inserir Pessoa  | 8 - Listar Pessoas  | 9 - Remover Pessoa");
         System.out.println("10 - Inserir Gênero | 11 - Listar Gêneros | 12 - Remover Gênero");
         System.out.println("\n--- CONSULTAS COMPLEXAS --- SISTEMA DE FILMES ---\n");
-        System.out.println("13 - Criar uma avaliacao | 14 - Deletar uma avaliacao | 15 - Listar Avaliações (JOIN)");
-        System.out.println("16 - Media das notas das Avaliações (SUBQUERY)");
-        System.out.println("17 - Associar genero a um filme");
-        System.out.println("18 - Adicionar pessoa ao elenco de um filme");
+        System.out.println("13 - Criar uma avaliacao | 14 - Deletar uma avaliacao | 15 - Listar Avaliações (JOIN) | ");
+        System.out.println("16 - Media das notas das Avaliações (SUBQUERY) | ");
+        System.out.println("17 - Associar genero a um  | ");
+        System.out.println("18 - Adicionar pessoa ao elenco de um filme | ");
         System.out.println("\n--- --- --- ---");
         System.out.println("0 - Sair");
         System.out.println("--- --- --- ---");
