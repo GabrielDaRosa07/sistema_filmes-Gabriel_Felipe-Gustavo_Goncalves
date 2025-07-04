@@ -11,3 +11,4 @@
 /nbdist/
 .nb-gradle/
 /SistemaFilmes/dist/
+/SistemaFilmes/build/

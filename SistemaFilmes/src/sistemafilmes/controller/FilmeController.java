@@ -126,7 +126,7 @@ public class FilmeController {
         System.out.println("\n-----Associar Gênero a um Filme-----");
         
         System.out.println("\nFilmes disponíveis:");
-        new FilmeController().listarFilmes(con); 
+        new ElencoController().listarFilmesSimples(con);
         System.out.print("\nDigite o ID do Filme: ");
         int idFilme = s.nextInt();
         s.nextLine(); 
@@ -148,6 +148,16 @@ public class FilmeController {
         
         System.out.println("Associação de gêneros concluida :) .");
         
+    }
+    
+    public void listarFilmesSimples(ArrayList<FilmeBean> listaDeFilmes){
+        if(listaDeFilmes == null || listaDeFilmes.isEmpty()){
+            System.out.println("Nenhum filme para exibir.");
+            return;
+        }
+        for(FilmeBean fb : listaDeFilmes){
+            System.out.println("  - " + fb.toString());
+        }
     }
     
 }

@@ -41,6 +41,23 @@ CREATE TABLE Avaliacao(
     FOREIGN KEY (IDFilme) REFERENCES Filme(IDFilme)
 );
 
+CREATE TABLE Lista (
+    IDLista INT PRIMARY KEY,
+    IDUser INT NOT NULL,
+    Nome VARCHAR(100) NOT NULL,
+    Privada BOOLEAN NOT NULL DEFAULT FALSE,
+    FOREIGN KEY (IDUser) REFERENCES Usuario(IDUser) ON DELETE CASCADE 
+);
+
+CREATE TABLE ListaDeFilme (
+    IDLista INT,
+    IDFilme INT,
+    Posicao INT,
+    PRIMARY KEY (IDLista, IDFilme),
+    FOREIGN KEY (IDLista) REFERENCES Lista(IDLista) ON DELETE CASCADE,
+    FOREIGN KEY (IDFilme) REFERENCES Filme(IDFilme)
+);
+
 CREATE TABLE Possui(
     IDFilme INT,
     IDGenero INT,
@@ -73,7 +90,7 @@ INSERT INTO Pessoa (IDPessoa, Nome, Papel) VALUES
 (101, 'Keanu Reeves', 'Ator'),
 (102, 'Lana Wachowski', 'Diretor'),
 (103, 'David Corenswet', 'Ator'),
-(104, 'Tarantino', 'Diretor/Ator');
+(104, 'Tarantino', 'Diretor/Ator'),
 (106, 'James Gunn', 'Diretor');
 
 INSERT INTO Filme (IDFilme, Titulo, Ano, Duracao, Sinopse) VALUES
@@ -93,4 +110,9 @@ INSERT INTO Avaliacao (IDUser, IDFilme, Critica, Nota, Data) VALUES
 (1, 1001, 'Filme revolucionário, mudou o cinema!', 5.0, '2025-06-26'),
 (3, 1001, 'Uma obra-prima dos filmes de super heroi, embora o estilo pode ser muito lúdico para alguns.', 4.5, '2025-06-20');
 
+INSERT INTO Lista (IDLista, IDUser, Nome, Privada) VALUES
+(501, 1, 'Meus Favoritos de Ficção Científica', FALSE),
+(502, 2, 'Filmes para ver no fim de semana', TRUE);
 
+INSERT INTO ListaDeFilme (IDLista, IDFilme, Posicao) VALUES
+(501, 1001, 1);

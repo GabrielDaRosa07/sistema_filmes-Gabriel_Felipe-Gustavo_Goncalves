@@ -53,7 +53,6 @@ public class FilmeModel {
 
                 String generosConcatenados = result.getString("Generos");                
                 if (generosConcatenados != null) {
-                    // Separa a string de generos em uma lista
                     List<String> generosList = List.of(generosConcatenados.split(", "));
                     fb.setGeneros(generosList);
                 }                
@@ -150,7 +149,7 @@ public class FilmeModel {
             try(ResultSet rs = stCheck.executeQuery()){
                 if (rs.next() && rs.getInt(1) > 0) {
                     System.out.println("Este filme já está associado a este gênero.");
-                    return; // Sai do método se a associação já existe
+                    return;
                 }
             }
         }
