@@ -39,7 +39,7 @@ public class PessoaController {
     
     public void listarPessoas(Connection con) throws SQLException{
         
-        System.out.println("-----Lista de Pessoas(Ator, Diretor)-----");
+        System.out.println("\n-----Lista de Pessoas(Ator, Diretor)-----");
         ArrayList<PessoaBean> listaPessoas = PessoaModel.listAll(con);
         
         for(PessoaBean pb:listaPessoas){
@@ -51,8 +51,9 @@ public class PessoaController {
     public void deletePessoa(Connection con) throws SQLException{
         
         Scanner s = new Scanner(System.in);
-        System.out.println("-----Remover Pessoa (Ator/Diretor)-----");
-        System.out.print("Digite o ID da pessoa que quer remover:");
+        System.out.println("\n-----Remover Pessoa (Ator/Diretor)-----");
+        new PessoaController().listarPessoas(con);
+        System.out.print("\nDigite o ID da pessoa que quer remover:");
         
         if(!s.hasNextInt()){
             
@@ -63,7 +64,7 @@ public class PessoaController {
         int id = s.nextInt();
         s.nextLine();
         
-        System.out.print("Tem certeza da remoção? (s/n) ");
+        System.out.print("\nTem certeza da remoção? (s/n) ");
         String confirmacao = s.next();
         
         if(confirmacao.equalsIgnoreCase("s")){

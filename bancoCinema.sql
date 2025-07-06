@@ -108,7 +108,7 @@ INSERT INTO Elenco (IDPessoa, IDFilme) VALUES
 
 INSERT INTO Avaliacao (IDUser, IDFilme, Critica, Nota, Data) VALUES
 (1, 1001, 'Filme revolucionário, mudou o cinema!', 5.0, '2025-06-26'),
-(3, 1001, 'Uma obra-prima dos filmes de super heroi, embora o estilo pode ser muito lúdico para alguns.', 4.5, '2025-06-20');
+(3, 1002, 'Uma obra-prima dos filmes de super heroi, embora o estilo pode ser muito lúdico para alguns.', 4.5, '2025-06-20');
 
 INSERT INTO Lista (IDLista, IDUser, Nome, Privada) VALUES
 (501, 1, 'Meus Favoritos de Ficção Científica', FALSE),

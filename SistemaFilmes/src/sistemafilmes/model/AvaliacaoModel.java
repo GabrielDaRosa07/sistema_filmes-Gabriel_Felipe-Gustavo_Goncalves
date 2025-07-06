@@ -79,4 +79,31 @@ public class AvaliacaoModel {
         return false;
     }
     
+    public static boolean avaliacaoExists(int idUser,int idFilme,Connection con) throws SQLException{
+        String sql = "SELECT COUNT(*) FROM Avaliacao WHERE IDUser = ? AND IDFilme = ?";
+        try(PreparedStatement st = con.prepareStatement(sql)){
+            st.setInt(1, idUser);
+            st.setInt(2, idFilme);
+            try(ResultSet rs = st.executeQuery()){
+                if (rs.next()){
+                    return rs.getInt(1)>0;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void update(AvaliacaoBean ab,Connection con) throws SQLException{
+        String sql = "UPDATE Avaliacao SET Critica = ?, Nota = ?, Data = ? WHERE IDUser = ? AND IDFilme = ?";
+        try(PreparedStatement st = con.prepareStatement(sql)){
+            st.setString(1, ab.getCritica());
+            st.setDouble(2, ab.getNota());
+            st.setDate(3, ab.getData());
+            st.setInt(4, ab.getIdUser());
+            st.setInt(5, ab.getIdFilme());
+            st.executeUpdate();
+            System.out.println("\nAvaliação atualizada :) ");
+        }
+    }
+    
 }

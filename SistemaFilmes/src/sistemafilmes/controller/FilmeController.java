@@ -84,13 +84,13 @@ public class FilmeController {
         
         System.out.println("\n-----Filmes com nota acima de media de todos os filmes-----");
         
-        ArrayList<FilmeNotaBean> lista = FilmeModel.listMedia(con);
+        ArrayList<FilmeMediaNotaBean> lista = FilmeModel.listMedia(con);
         
         if(lista.isEmpty()){
             System.out.println("Não tem filmes acima da média ou não tem notas suficientes :(");        
         }else{
-            for (FilmeNotaBean fnb:lista){
-                System.out.println(fnb.toString());
+            for (FilmeMediaNotaBean fmnb:lista){
+                System.out.println(fmnb.toString());
             }
         }
         
@@ -100,7 +100,8 @@ public class FilmeController {
         
         Scanner s = new Scanner(System.in);
         System.out.println("\n-----Remover Filme-----");
-        System.out.print("Digite o id do filme a ser removido: ");
+        new ElencoController().listarFilmesSimples(con);
+        System.out.print("\nDigite o id do filme a ser removido: ");
         
         if(!s.hasNextInt()){
             System.out.println("Filme nao encontrado, digite um válido");

@@ -64,24 +64,24 @@ public class FilmeModel {
         
     }
     
-    public static ArrayList<FilmeNotaBean> listMedia(Connection con) throws SQLException{
+    public static ArrayList<FilmeMediaNotaBean> listMedia(Connection con) throws SQLException{
         
-        String sql = "SELECT f.Titulo, a.Nota " +
+        String sql = "SELECT f.Titulo, AVG(a.Nota) AS MediaDoFilme " +
                      "FROM Avaliacao a " +
                      "JOIN Filme f ON a.IDFilme = f.IDFilme " +
-                     "WHERE a.Nota > (SELECT AVG(Nota) FROM Avaliacao) " +
-                     "ORDER BY a.Nota DESC"; // ordena o melhor pro pior
+                     "GROUP BY f.IDFilme, f.Titulo " +
+                     "HAVING AVG(a.Nota) > (SELECT AVG(Nota) FROM Avaliacao) " +
+                     "ORDER BY MediaDoFilme DESC";// ordena do melhor pro pior :)
 
-        
-        ArrayList<FilmeNotaBean> lista = new ArrayList<>();
+        ArrayList<FilmeMediaNotaBean> lista = new ArrayList<>();
         
         try(Statement st = con.createStatement(); ResultSet result = st.executeQuery(sql)){
             while(result.next()){
-                FilmeNotaBean fnb = new FilmeNotaBean(
-                        result.getString("Titulo"),
-                        result.getDouble("Nota")
+                FilmeMediaNotaBean fmnb = new FilmeMediaNotaBean(
+                    result.getString("Titulo"),
+                    result.getDouble("MediaDoFilme")
                 );
-                lista.add(fnb);
+                lista.add(fmnb);
             }
         }
         return lista;

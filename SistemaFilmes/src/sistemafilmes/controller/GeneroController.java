@@ -50,7 +50,8 @@ public class GeneroController {
         Scanner s = new Scanner(System.in);
         
         System.out.println("\n-----Remover Genero-----");
-        System.out.print("Digite o genero a ser removido: ");
+        new GeneroController().listarGeneros(con);
+        System.out.print("\nDigite o genero a ser removido: ");
         
         int id = s.nextInt();
         s.nextLine();

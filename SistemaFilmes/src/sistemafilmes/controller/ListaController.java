@@ -18,7 +18,7 @@ public class ListaController {
         Scanner s = new Scanner(System.in);
         System.out.println("\n-----Criar lista de filmes-----");
 
-        System.out.println("Usuários:");
+        System.out.println("\nUsuários:");
         new UsuarioController().listarUsuarios(con);
         System.out.print("\nDigite o ID do Usuário que vai ser o dono da lista: ");
         int idUser = s.nextInt();
@@ -44,24 +44,25 @@ public class ListaController {
         
         Scanner input = new Scanner(System.in);
         System.out.println("\n-----Ver Minhas Listas-----");
+        System.out.println("\nUsuários disponíveis:");
         new UsuarioController().listarUsuarios(con);
-        System.out.print("Digite o seu ID de Usuário: ");
+        System.out.print("\nDigite o seu ID de Usuário: ");
         int idUser = input.nextInt();
         input.nextLine();
 
-        System.out.println("\n-----Listas do Usuário ID " + idUser + "-----");
         ArrayList<ListaBean> listas = ListaModel.listAllByUser(idUser, con);
 
         if(listas.isEmpty()){
             System.out.println("nenhuma lista :( ");
             return;
         }
-        for(ListaBean lb : listas){
-            System.out.println("ID: " + lb.getIdLista() + " | Nome: " + lb.getNome());
-        }
         
         int idListaEscolhida;
         do{
+            System.out.println("\n-----Listas do Usuário ID " + idUser + "-----");
+            for(ListaBean lb : listas){
+            System.out.println("ID: " + lb.getIdLista() + " | Nome: " + lb.getNome());
+            }
             System.out.print("\nDigite o ID de uma lista (ou 0 para voltar ao menu): ");
             idListaEscolhida = input.nextInt();
             input.nextLine();
@@ -70,10 +71,12 @@ public class ListaController {
                 ArrayList<FilmeBean> filmes = ListaModel.pegarFilmesDaLista(idListaEscolhida, con);
 
                 System.out.println("\n-----Filmes na Lista ID " + idListaEscolhida + "-----");
+                System.out.println("----- ----- ----- ----- -----");                
                 if(filmes.isEmpty()){
                     System.out.println("(Esta lista está vazia)");
                 }else{
                     new FilmeController().listarFilmesSimples(filmes);
+                    System.out.println("----- ----- ----- ----- -----");                                    
                 }
             }
             

@@ -5,7 +5,6 @@ package sistemafilmes.controller;
  *
  * @author gabriel-da-rosa : gustavo-gonçalves
  * 
- * Ele e o meio termo, nao fala com o banco e nem mostra nada, ele gera a logica das operacoes.
  */
 
 import sistemafilmes.model.UsuarioModel;
@@ -18,7 +17,7 @@ public class UsuarioController {
     public void createUsuario(Connection con) throws SQLException{
         
         Scanner s = new Scanner(System.in);
-        System.out.println("\n----- Cadastro de novo usuario -----");
+        System.out.println("\n-----Cadastro de novo usuario-----");
         
         int id;
         Random random = new Random();
@@ -64,7 +63,8 @@ public class UsuarioController {
         
         Scanner s = new Scanner(System.in);
         System.out.println("\n-----Remover Usuário-----");
-        System.out.print("Digite o ID do usuário que quer remover:");
+        new UsuarioController().listarUsuarios(con);
+        System.out.print("\nDigite o ID do usuário que quer remover: ");
         
         if(!s.hasNextInt()){
             

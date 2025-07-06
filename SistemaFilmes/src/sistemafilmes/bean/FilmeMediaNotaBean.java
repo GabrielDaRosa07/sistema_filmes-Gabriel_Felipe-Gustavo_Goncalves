@@ -5,14 +5,14 @@ package sistemafilmes.bean;
  *
  * @author gabriel-da-rosa : gustavo-gonçalves
  */
-public class FilmeNotaBean {
+public class FilmeMediaNotaBean {
     
     private String tituloFilme;
-    private double nota;
+    private double mediaNota;
 
-    public FilmeNotaBean(String tituloFilme, double nota) {
+    public FilmeMediaNotaBean(String tituloFilme, double mediaNota) {
         this.tituloFilme = tituloFilme;
-        this.nota = nota;
+        this.mediaNota = mediaNota;
     }
 
     public String getTituloFilme() {
@@ -23,18 +23,17 @@ public class FilmeNotaBean {
         this.tituloFilme = tituloFilme;
     }
 
-    public double getNota() {
-        return nota;
+    public double getMediaNota() {
+        return mediaNota;
     }
 
-    public void setNota(double nota) {
-        this.nota = nota;
+    public void setMediaNota(double mediaNota) {
+        this.mediaNota = mediaNota;
     }
     
     @Override
     public String toString() {
-        //  String.format vai formata a nota pra ser tipo 4.0 em vez de 4
-        return String.format("Título: %s | Nota: %.1f", tituloFilme, nota);
-    } 
+        return String.format("\nTítulo: %s | Nota Média: %.1f", tituloFilme, mediaNota);
+    }
     
 }

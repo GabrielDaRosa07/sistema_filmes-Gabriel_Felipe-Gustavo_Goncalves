@@ -1,5 +1,5 @@
 package sistemafilmes.main;
-
+ 
 /**
  * - LEMBRAR DE ADICIONAR O .JAR DO DRIVER JDBC NOS LIBRARIES
  * - LINK JAVA 8 PRA CIMA: https://jdbc.postgresql.org/download/postgresql-42.7.7.jar
@@ -11,7 +11,6 @@ package sistemafilmes.main;
  * 
  * @author gabriel-da-rosa : gustavo-gonçalves
  *
- * essa o nome ja diz tudo
  */
 
 import sistemafilmes.controller.*;
@@ -26,6 +25,7 @@ public class Principal {
         Connection con = c.getConnection();
         int op = 0;
 
+        
         do{
 
             op=menu();
@@ -34,30 +34,78 @@ public class Principal {
 
                 switch(op){
 
-                    case 1 -> new UsuarioController().createUsuario(con);
-                    case 2 -> new UsuarioController().listarUsuarios(con);
-                    case 3 -> new UsuarioController().deleteUsuario(con);
-                    case 4 -> new FilmeController().createFilme(con);
-                    case 5 -> new FilmeController().listarFilmes(con);
-                    case 6 -> new FilmeController().deleteFilme(con);
-                    case 7 -> new PessoaController().createPessoa(con);
-                    case 8 -> new PessoaController().listarPessoas(con);
-                    case 9 -> new PessoaController().deletePessoa(con);
-                    case 10 -> new GeneroController().createGenero(con);
-                    case 11 -> new GeneroController().listarGeneros(con);
-                    case 12 -> new GeneroController().deleteGenero(con);
-                    case 13 -> new AvaliacaoController().createAvaliacao(con);
-                    case 14 -> new AvaliacaoController().deleteAvaliacao(con);
-                    case 15 -> new AvaliacaoJoinController().listarAvaliacoesJoin(con);
-                    case 16 -> new FilmeController().listarFilmesMedia(con);
-                    case 17 -> new FilmeController().associarGeneroFilme(con);
-                    case 18 -> new ElencoController().adicionarPessoaAoElenco(con);
-                    case 19 -> new ListaController().createLista(con);
-                    case 20 -> new ListaController().listarListasDoUsuario(con);
-                    case 21 -> new ListaController().deleteLista(con);
-                    case 22 -> new ListaController().adicionarFilmeLista(con);
-                    case 0 -> System.out.println("Saindo...");
-                    default -> System.out.println("Opção inválida, digite novamente:");
+                    case 1:
+                        new UsuarioController().createUsuario(con);
+                        break;
+                    case 2:
+                        new UsuarioController().listarUsuarios(con);
+                        break;
+                    case 3:
+                        new UsuarioController().deleteUsuario(con);
+                        break;
+                    case 4:
+                        new FilmeController().createFilme(con);
+                        break;
+                    case 5:
+                        new FilmeController().listarFilmes(con);
+                        break;
+                    case 6:
+                        new FilmeController().deleteFilme(con);
+                        break;
+                    case 7:
+                        new PessoaController().createPessoa(con);
+                        break;
+                    case 8:
+                        new PessoaController().listarPessoas(con);
+                        break;
+                    case 9:
+                        new PessoaController().deletePessoa(con);
+                        break;
+                    case 10:
+                        new GeneroController().createGenero(con);
+                        break;
+                    case 11:
+                        new GeneroController().listarGeneros(con);
+                        break;
+                    case 12:
+                        new GeneroController().deleteGenero(con);
+                        break;
+                    case 13:
+                        new AvaliacaoController().createAvaliacao(con);
+                        break;
+                    case 14:
+                        new AvaliacaoController().deleteAvaliacao(con);
+                        break;
+                    case 15:
+                        new AvaliacaoJoinController().listarAvaliacoesJoin(con);
+                        break;
+                    case 16:
+                        new FilmeController().listarFilmesMedia(con);
+                        break;
+                    case 17:
+                        new FilmeController().associarGeneroFilme(con);
+                        break;
+                    case 18:
+                        new ElencoController().adicionarPessoaAoElenco(con);
+                        break;
+                    case 19:
+                        new ListaController().createLista(con);
+                        break;
+                    case 20:
+                        new ListaController().listarListasDoUsuario(con);
+                        break;
+                    case 21:
+                        new ListaController().deleteLista(con);
+                        break;
+                    case 22:
+                        new ListaController().adicionarFilmeLista(con);
+                        break;
+                    case 0:
+                        System.out.println("Saindo...");
+                        break;
+                    default:
+                        System.out.println("Opção inválida, digite novamente:");
+                        break;
                 }
             }catch(SQLException ex){
                 System.err.println("Erro do banco de dados: "+ex.getMessage());  
@@ -82,13 +130,12 @@ public class Principal {
         System.out.println("7 - Inserir Pessoa  | 8 - Listar Pessoas  | 9 - Remover Pessoa");
         System.out.println("10 - Inserir Gênero | 11 - Listar Gêneros | 12 - Remover Gênero");
         System.out.println("\n--- AÇÕES E CONSULTAS COMPLEXAS --- SISTEMA DE FILMES ---\n");
-        System.out.println("13 - Criar uma avaliacao | 14 - Deletar uma avaliacao | 15 - Listar Avaliações (JOIN)");
-        System.out.println("16 - Media das notas das Avaliações (SUBQUERY)");
-        System.out.println("17 - Associar genero a um filme");
-        System.out.println("18 - Adicionar pessoa ao elenco de um filme");
+        System.out.println("13 - Criar uma avaliacao | 14 - Deletar uma avaliacao");
+        System.out.println("15 - Listar Avaliações (JOIN) | 16 - Filmes com nota acima de media de todos os filmes(SUBQUERY)");        
+        System.out.println("17 - Associar genero a um filme | 18 - Adicionar pessoa ao elenco de um filme");
         System.out.println("\n--- LISTAS --- SISTEMA DE FILMES ---\n");
-        System.out.println("19 - Criar Lista | 20 - Ver Listas | 21 - Remover Lista");
-        System.out.println("22 - Associar filme a lista");
+        System.out.println("19 - Criar Lista | 20 - Ver Listas");
+        System.out.println("21 - Remover Lista | 22 - Associar filme a lista");
         System.out.println("\n--- --- --- ---");
         System.out.println("0 - Sair");
         System.out.println("--- --- --- ---");
