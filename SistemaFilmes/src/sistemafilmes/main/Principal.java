@@ -80,26 +80,30 @@ public class Principal {
                         new AvaliacaoJoinController().listarAvaliacoesJoin(con);
                         break;
                     case 16:
+                        new AvaliacaoController().listarAvaliacoesDeUmUsuario(con);
+                        break;                    
+                    case 17:
                         new FilmeController().listarFilmesMedia(con);
                         break;
-                    case 17:
+                    case 18:
                         new FilmeController().associarGeneroFilme(con);
                         break;
-                    case 18:
+                    case 19:
                         new ElencoController().adicionarPessoaAoElenco(con);
                         break;
-                    case 19:
+                    case 20:
                         new ListaController().createLista(con);
                         break;
-                    case 20:
+                    case 21:
                         new ListaController().listarListasDoUsuario(con);
                         break;
-                    case 21:
+                    case 22:
                         new ListaController().deleteLista(con);
                         break;
-                    case 22:
+                    case 23:
                         new ListaController().adicionarFilmeLista(con);
                         break;
+
                     case 0:
                         System.out.println("Saindo...");
                         break;
@@ -131,11 +135,12 @@ public class Principal {
         System.out.println("10 - Inserir Gênero | 11 - Listar Gêneros | 12 - Remover Gênero");
         System.out.println("\n--- AÇÕES E CONSULTAS COMPLEXAS --- SISTEMA DE FILMES ---\n");
         System.out.println("13 - Criar uma avaliacao | 14 - Deletar uma avaliacao");
-        System.out.println("15 - Listar Avaliações (JOIN) | 16 - Filmes com nota acima de media de todos os filmes(SUBQUERY)");        
-        System.out.println("17 - Associar genero a um filme | 18 - Adicionar pessoa ao elenco de um filme");
+        System.out.println("15 - Listar Avaliações (JOIN) | 16 - Listar Avaliações de um usuario");        
+        System.out.println("17 - Filmes com nota acima de media de todos os filmes(SUBQUERY)");        
+        System.out.println("18 - Associar genero a um filme | 19 - Adicionar pessoa ao elenco de um filme");
         System.out.println("\n--- LISTAS --- SISTEMA DE FILMES ---\n");
-        System.out.println("19 - Criar Lista | 20 - Ver Listas");
-        System.out.println("21 - Remover Lista | 22 - Associar filme a lista");
+        System.out.println("20 - Criar Lista | 21 - Ver Listas");
+        System.out.println("22 - Remover Lista | 23 - Associar filme a lista");
         System.out.println("\n--- --- --- ---");
         System.out.println("0 - Sair");
         System.out.println("--- --- --- ---");

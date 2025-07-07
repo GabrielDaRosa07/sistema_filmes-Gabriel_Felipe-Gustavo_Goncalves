@@ -6,8 +6,8 @@ package sistemafilmes.controller;
  * @author gabriel-da-rosa : gustavo-gonçalves
  */
 
-import sistemafilmes.model.AvaliacaoJoinModel;
-import sistemafilmes.bean.AvaliacaoJoinBean;
+import sistemafilmes.model.*;
+import sistemafilmes.bean.*;
 import java.sql.*;
 import java.util.*;
 
@@ -27,5 +27,7 @@ public class AvaliacaoJoinController {
             }
         }  
     }
+    
+    
     
 }

@@ -8,6 +8,7 @@ package sistemafilmes.controller;
 import sistemafilmes.bean.*;
 import sistemafilmes.model.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AvaliacaoController {
@@ -101,5 +102,26 @@ public class AvaliacaoController {
             System.out.println("Operação cancelada :( ");
         }
     }
+    
+    public void listarAvaliacoesDeUmUsuario(Connection con) throws SQLException {
+        Scanner s = new Scanner(System.in);
+        System.out.println("\n-----Ver todas as avaliações de um usuário-----");
+        new UsuarioController().listarUsuarios(con);
+
+        System.out.print("\nDigite o ID do usuário para ver suas avaliações: ");
+        int idUser = s.nextInt();
+
+        ArrayList<AvaliacaoJoinBean> lista = AvaliacaoModel.listByUser(idUser, con);
+
+        if (lista.isEmpty()) {
+            System.out.println("\nEste usuário ainda não alguma avaliação :(");
+            return;
+        }
+
+        System.out.println("\n-----Avaliações do Usuário ID "+idUser+ "-----");
+        for (AvaliacaoJoinBean ajb : lista) {
+            System.out.println(ajb.toString());
+        }
+    }   
     
 }
